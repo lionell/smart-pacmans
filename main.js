@@ -24,10 +24,9 @@ background.width = app.screen.width;
 background.height = app.screen.height;
 app.stage.addChild(background);
 
-let epochText = new PIXI.Text('', large);
+let epochText = new PIXI.Text('Epoch 1', large);
 epochText.x = 50;
 epochText.y = app.screen.height - 80;
-app.stage.addChild(epochText);
 
 let helpText = new PIXI.Text(
     '        HELP        \n' +
@@ -38,12 +37,14 @@ let helpText = new PIXI.Text(
         's(S) - (auto)selection\n' +
         'e(E) - (auto)evolution\n' +
         'p    - pause/resume\n' +
-        'i    - show/hide info\n' +
-        'h    - this help', large);
+        'i    - info\n', large);
 helpText.x = app.screen.width / 2 - 200;
 helpText.y = app.screen.height / 2 - 150;
 helpText.visible = false;
-app.stage.addChild(helpText);
+
+let hintText = new PIXI.Text('h - help', large);
+hintText.x = app.screen.width - 200;
+hintText.y = app.screen.height - 70;
 
 window.addEventListener('resize', onResize);
 function onResize() {
@@ -424,3 +425,8 @@ function evolution() {
     epoch++;
     epochText.text = 'Epoch ' + epoch;
 }
+
+// Bring to the front
+app.stage.addChild(epochText);
+app.stage.addChild(helpText);
+app.stage.addChild(hintText);
