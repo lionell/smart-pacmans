@@ -114,6 +114,7 @@ let ghosts = [];
 
 function createPacman() {
     let sprite = new PIXI.Sprite(pacmanTexture);
+    sprite.scale.set(0.7);
     let text = new PIXI.Text('', small);
     text.visible = false;
     sprite.anchor.set(0.5);
@@ -154,6 +155,7 @@ function createPacman() {
 
 function createGhostAt({x, y}) {
     let sprite = new PIXI.Sprite(ghostTexture);
+    sprite.scale.set(0.7);
     sprite.anchor.set(0.5);
     sprite.position.set(x, y);
     let rotation = randomRotation();
