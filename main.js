@@ -42,9 +42,9 @@ helpText.x = app.screen.width / 2 - 200;
 helpText.y = app.screen.height / 2 - 150;
 helpText.visible = false;
 
-let hintText = new PIXI.Text('h - help', large);
-hintText.x = app.screen.width - 200;
-hintText.y = app.screen.height - 70;
+let hintText = new PIXI.Text('Press h for help', large);
+hintText.x = app.screen.width - 370;
+hintText.y = app.screen.height - 80;
 
 window.addEventListener('resize', onResize);
 function onResize() {
