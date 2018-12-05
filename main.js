@@ -53,11 +53,11 @@ function onResize() {
     background.height = app.screen.height;
 }
 
-let autoRespawnMode = false;
+let autoRespawnMode = true;
 let dynamicGhostsMode = false;
-let autoMutationMode = false;
-let autoSelectionMode = false;
-let autoEvolutionMode = false;
+let autoMutationMode = true;
+let autoSelectionMode = true;
+let autoEvolutionMode = true;
 let showInfoMode = false;
 let paused = false;
 let epoch = 1;
