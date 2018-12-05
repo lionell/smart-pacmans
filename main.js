@@ -24,6 +24,27 @@ background.width = app.screen.width;
 background.height = app.screen.height;
 app.stage.addChild(background);
 
+let epochText = new PIXI.Text('', large);
+epochText.x = 50;
+epochText.y = app.screen.height - 80;
+app.stage.addChild(epochText);
+
+let helpText = new PIXI.Text(
+    '        HELP        \n' +
+        '\n' +
+        'r    - ghosts respawn\n' +
+        'g    - dynamic ghosts\n' +
+        'm(M) - (auto)mutation\n' +
+        's(S) - (auto)selection\n' +
+        'e(E) - (auto)evolution\n' +
+        'p    - pause/resume\n' +
+        'i    - show/hide info\n' +
+        'h    - this help', large);
+helpText.x = app.screen.width / 2 - 200;
+helpText.y = app.screen.height / 2 - 150;
+helpText.visible = false;
+app.stage.addChild(helpText);
+
 window.addEventListener('resize', onResize);
 function onResize() {
     app.renderer.resize(window.innerWidth, window.innerHeight);
@@ -82,11 +103,8 @@ function onKeyDown(event) {
         }
     } else if (event.keyCode == /* i */ 73) {
         showInfoMode = !showInfoMode;
-        // for (let i = 0; i < pacmans.length; i++) {
-        //     pacmans[i].info.visible = !pacmans[i].info.visible;
-        // }
     } else if (event.keyCode == /* h */ 72) {
-        showHelp();
+        helpText.visible = !helpText.visible;
     }
 }
 
@@ -304,32 +322,6 @@ function showRip({x, y}) {
     sprite.position.set(x, y);
     app.stage.addChild(sprite);
     window.setTimeout(function() { app.stage.removeChild(sprite); }, 2500);
-}
-
-let epochText = new PIXI.Text('Epoch 1', large);
-epochText.x = 50;
-epochText.y = app.screen.height - 80;
-app.stage.addChild(epochText);
-
-let helpText = new PIXI.Text(
-    '        HELP        \n' +
-    '\n' +
-    'r    - ghosts respawn\n' +
-    'g    - dynamic ghosts\n' +
-    'm(M) - (auto)mutation\n' +
-    's(S) - (auto)selection\n' +
-    'e(E) - (auto)evolution\n' +
-    'p    - pause/resume\n' +
-    'i    - show/hide info\n' +
-    'h    - this help', large);
-helpText.x = app.screen.width / 2 - 200;
-helpText.y = app.screen.height / 2 - 150;
-helpText.visible = false;
-app.stage.addChild(helpText);
-
-function showHelp() {
-    helpText.visible = true;
-    window.setTimeout(function() { helpText.visible = false; }, 5000);
 }
 
 function propagate(input, nn) {
